@@ -1,5 +1,6 @@
 import React from "react";
-import { Header } from "./components";
+import {Route, Routes} from "react-router-dom";
+import { CreateContainer, Header, MainContainer } from "./components";
 
 const App = () => {
     return (
@@ -7,7 +8,12 @@ const App = () => {
             
             <Header />
 
-            <main className="mt-24 p-8 w-full">Maincontainer</main>
+            <main className="mt-24 p-8 w-full">
+                <Routes>
+                    <Route path="/*" element={<MainContainer />} />
+                    <Route path="/createItem" element={<CreateContainer />} />
+                </Routes>
+            </main>
         </div>
     )
 }

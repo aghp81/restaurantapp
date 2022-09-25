@@ -1,8 +1,8 @@
 import React from "react";
 import { MdShoppingBasket } from "react-icons/md";
 
-import Logo from "./img/logo.png";
-import Avatar from "./img/avatar-2.png";
+import Logo from "./../img/logo.png";
+import Avatar from "./../img/avatar-2.png";
 
 
 const Header = () => {
@@ -39,7 +39,7 @@ const Header = () => {
                 </div>
 
                 {/* avatar image */}
-                <img src={Avatar} className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl"
+                <img src={Avatar} className="w-10 min-w-[40px] h-10 min-h-[40px] drop-shadow-xl cursor-pointer"
                 alt="userprofile" />
 
                 </div>
