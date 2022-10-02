@@ -32,6 +32,8 @@ const Header = () => {
                 user: providerData[0],
             }); 
             localStorage.setItem('user', JSON.stringify(providerData[0])); 
+        }else {
+            setIsMenu(!isMenu);
         }
     };
 
@@ -78,7 +80,11 @@ const Header = () => {
                     />
                     {
                         isMenu && (
-                            <div className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0">
+                            <motion.div
+                              initial={{opacity : 0, scale : 0.6}}
+                              animate={{opacity : 1, scale : 1}}
+                              exit={{opacity : 0, scale : 0.6}}
+                              className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0">
                         {
                             user && user.email === "aghp81@gmail.com" && (
                                 <Link to={"/createItem"}>
@@ -96,7 +102,7 @@ const Header = () => {
                           duration-100 ease-in-out text-textColor text-base">
                             Logout <MdLogout />
                         </p>
-                    </div>
+                    </motion.div>
                         )
                     }
                 </div>
