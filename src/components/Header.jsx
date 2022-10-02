@@ -19,22 +19,9 @@ const Header = () => {
     const firebaseAuth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-
-    const [{user}, dispatch] =useStateValue();
-
-    const [isMenu, setIsMenu] = useState(false);
-
     const login = async () => {
-        if (!user) {
-            const {user: {refreshToken, providerData}} = await  signInWithPopup(firebaseAuth, provider);
-            dispatch({
-                type: actionType.SET_USER,
-                user: providerData[0],
-            }); 
-            localStorage.setItem('user', JSON.stringify(providerData[0])); 
-        }else {
-            setIsMenu(!isMenu);
-        }
+        const response = await  signInWithPopup(firebaseAuth, provider);
+        console.log(response);
     };
 
     return (
