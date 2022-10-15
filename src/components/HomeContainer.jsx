@@ -1,7 +1,7 @@
 import React from 'react';
+import { heroData } from '../utils/data';
 import Delivery from "./img/bike-delivery.png";
 import HeroBg from "./img/heroBg-1.png";
-import I1 from "./../img/i1.png";
 
 
 
@@ -35,20 +35,22 @@ const HomeContainer = () => {
             alt="hero-bg" />
 
             <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center px-32 py-4">
-              <div className="w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center">
-                <img src={I1} className="w-40 -mt-20" alt="I1" />
+              {heroData && heroData.map (n=> (
+                <div key={n.id} className="w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center">
+                <img src={n.imageSrc} className="w-40 -mt-20" alt="I1" />
 
                 <p className="text-xl font-semibold text-textColor mt-4">
-                  Icecream
+                  {n.name}
                 </p>
 
                 <p className="text-sm text-lighttextgray font-semibold my-3">
-                  chocolate & vanila
+                  {n.decp}
                 </p>
 
                 <p className="text-sm font-semibold text-headingColor">
-                  <span className="text-xs text-red-600">$</span> 5.25</p>
+                  <span className="text-xs text-red-600">$</span> {n.price}</p>
               </div>
+              ))}
             </div>
       </div>
     </section>
