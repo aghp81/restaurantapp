@@ -4,6 +4,8 @@ import HeroBg from "./img/heroBg-1.png";
 import I1 from "./../img/i1.png";
 
 
+
+
 const HomeContainer = () => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-2 w-full" id="home">
@@ -33,14 +35,19 @@ const HomeContainer = () => {
             alt="hero-bg" />
 
             <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center px-32 py-4">
-              <div className="w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-md flex flex-col items-center justify-center">
+              <div className="w-190 p-4 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center">
                 <img src={I1} className="w-40 -mt-20" alt="I1" />
-                <p className="text-base font-semibold text-textColor">
+
+                <p className="text-xl font-semibold text-textColor mt-4">
                   Icecream
                 </p>
-                <p className="text-sm text-lighttextgray font-semibold">
+
+                <p className="text-sm text-lighttextgray font-semibold my-3">
                   chocolate & vanila
                 </p>
+
+                <p className="text-sm font-semibold text-headingColor">
+                  <span className="text-xs text-red-600">$</span> 5.25</p>
               </div>
             </div>
       </div>
