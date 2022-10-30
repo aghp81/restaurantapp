@@ -8,6 +8,7 @@
 import { storage } from "../firebase.gonfig";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { onSnapshot } from "firebase/firestore";
+import { saveItem } from "../utils/firebaseFunctions";
 
 
 
@@ -93,6 +94,14 @@ import { onSnapshot } from "firebase/firestore";
             qty : 1,
             price : price
            }
+           saveItem(data)
+           setIsLoading(false)
+           setFields(true);
+          setMsg('Data uploaded successfully');
+          setAlertStatus('success');
+          setTimeout(() => {
+            setFields(false);
+          }, 4000);
         }
       } catch (error) {
         console.log(error);
@@ -104,6 +113,14 @@ import { onSnapshot } from "firebase/firestore";
           setIsLoading(false)
         }, 4000);
       }
+    };
+
+    const clearData = () => {
+      setTitle("");
+      setImageAsset(null);
+      setCalories("");
+      setPrice("");
+      setCalories("Select Category");
     };
 
     return (
