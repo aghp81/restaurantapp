@@ -101,6 +101,7 @@ import { saveItem } from "../utils/firebaseFunctions";
           setAlertStatus('success');
           setTimeout(() => {
             setFields(false);
+            clearData();
           }, 4000);
         }
       } catch (error) {
