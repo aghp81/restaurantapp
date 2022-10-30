@@ -98,10 +98,10 @@ import { saveItem } from "../utils/firebaseFunctions";
            setIsLoading(false)
            setFields(true);
           setMsg('Data uploaded successfully');
+          clearData();
           setAlertStatus('success');
           setTimeout(() => {
-            setFields(false);
-            clearData();
+          setFields(false);
           }, 4000);
         }
       } catch (error) {
