@@ -14,7 +14,7 @@ const App = () => {
            // console.log(data);
            dispatch({
             type : actionType.SET_FOOD_ITEMS,
-             
+             foodItems : data
            })
         });
     };
