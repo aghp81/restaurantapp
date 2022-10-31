@@ -23,6 +23,8 @@ import { saveItem } from "../utils/firebaseFunctions";
     const [alertStatus, setAlertStatus] = useState("danger");
     const [msg, setMsg] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const[{}, dispatch] = useStateValue();
+
 
     const uploadImage = (e) => {
       setIsLoading(true);
@@ -123,6 +125,16 @@ import { saveItem } from "../utils/firebaseFunctions";
       setPrice("");
       setCalories("Select Category");
     };
+
+    const fetchData = () => async () => {
+      await getAllFoodItems().then(data => {
+         // console.log(data);
+         dispatch({
+          type : actionType.SET_FOOD_ITEMS,
+           foodItems : data
+         })
+      });
+  };
 
     return (
       <div className="w-full min-h-screen flex items-center justify-center">
