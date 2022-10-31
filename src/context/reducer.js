@@ -13,6 +13,12 @@ const reducer = (state, action) => {
                 user: action.user,
             };
 
+            case actionType.SET_FOOD_ITEMS:
+            return {
+                ...state,
+                foodItems: action.foodItems,
+            };
+
         default: 
             return state;
     }
