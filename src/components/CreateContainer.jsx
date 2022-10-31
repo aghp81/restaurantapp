@@ -8,7 +8,9 @@
 import { storage } from "../firebase.gonfig";
 import { deleteObject, getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { onSnapshot } from "firebase/firestore";
-import { saveItem } from "../utils/firebaseFunctions";
+import { getAllFoodItems, saveItem } from "../utils/firebaseFunctions";
+import { useStateValue } from "../context/StateProvider";
+import { actionType } from "../context/reducer";
 
 
 
@@ -116,6 +118,8 @@ import { saveItem } from "../utils/firebaseFunctions";
           setIsLoading(false)
         }, 4000);
       }
+
+      fetchData();
     };
 
     const clearData = () => {
