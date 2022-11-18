@@ -22,10 +22,10 @@ const RowContainer = ({flag, data, scrollValue}) => {
     > 
         {data && data.map(item => (
           <div 
-          key={item?.id} className="w-300 min-w-[300px] 
-          md:w-340 md:min-w-[340px] h-auto bg-cardOverlay 
+          key={item?.id} className="w-300 h-[225px] min-w-[300px] 
+          md:w-340 md:min-w-[340px] bg-cardOverlay 
           rounded-lg p-2 my-12 shadow-md 
-          backdrop-blur-lg hover:drop-shadow-lg">
+          backdrop-blur-lg hover:drop-shadow-lg flex flex-col items-center justify-between">
               <div className="w-full flex items-center justify-between">
                   <motion.img whileHover={{scale : 1.2 }}
                   src={item?.imageURL} 
