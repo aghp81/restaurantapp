@@ -14,7 +14,7 @@ const MenuContainer = () => {
 
         <div className="w-full flex items-center justify-start 
         lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
-            <div className="group bg-white w-24 min-w-[94px] h-28 
+            <div className="group bg-card w-24 min-w-[94px] h-28 
             cursor-pointer rounded-lg drop-shadow-lg 
             flex flex-col gap-3 items-center justify-center 
             duration-150 transition-all ease-in-out">
