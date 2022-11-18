@@ -6,6 +6,7 @@ import RowContainer from './RowContainer';
 import { useStateValue } from "../context/StateProvider";
 import { useRef } from 'react';
 import { useEffect } from 'react';
+import MenuContainer from './MenuContainer';
 
 
 const MainContainer = () => {
@@ -54,7 +55,7 @@ const MainContainer = () => {
           data = {foodItems?.filter((n) => n.category==="fruits")} />
         </section>
 
-        
+        <MenuContainer />
     </div>
     
   );
