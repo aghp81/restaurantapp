@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {IoFastFood} from "react-icons/io5";
 import {categories} from "../utils/data";
+import {motion} from "framer-motion";
 
 const MenuContainer = () => {
 
@@ -22,11 +23,12 @@ const MenuContainer = () => {
         <div className="w-full flex items-center justify-start 
         lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
             {categories && categories.map(category => (
-                <div key={category.id} 
+                <motion.div 
+                whileTap={{ scale : 0.6 }} 
+                key={category.id} 
                 className={`group ${filter === category.urlParaName ? 'bg-cartNumBg' : 'bg-card'} w-24 min-w-[94px] h-28 
                 cursor-pointer rounded-lg drop-shadow-xl 
-                flex flex-col gap-3 items-center justify-center hover:bg-cartNumBg
-                duration-150 transition-all ease-in-out`}
+                flex flex-col gap-3 items-center justify-center hover:bg-cartNumBg`}
                 onClick={() => setFilter(category.urlParaName)}
                 >
                     <div className={`w-10 h-10 rounded-full shadow-lg ${filter === category.urlParaName ? 'bg-white' : 'bg-cartNumBg'}
@@ -38,7 +40,7 @@ const MenuContainer = () => {
                     <p className={`text-sm ${filter === category.urlParaName ? 'text-white' : 'text-textColor'} group-hover:text-white`}>
                         {category.name}
                     </p>
-                </div>
+                </motion.div>
             ))}
         </div>
     </div>
