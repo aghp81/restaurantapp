@@ -19,17 +19,18 @@ const MenuContainer = () => {
         <div className="w-full flex items-center justify-start 
         lg:justify-center gap-8 py-6 overflow-x-scroll scrollbar-none">
             {categories && categories.map(category => (
-                <div key={category.id} className="group bg-card w-24 min-w-[94px] h-28 
+                <div key={category.id} 
+                className={`group ${filter === category.urlParaName ? 'bg-cartNumBg' : 'bg-card'} w-24 min-w-[94px] h-28 
                 cursor-pointer rounded-lg drop-shadow-xl 
                 flex flex-col gap-3 items-center justify-center hover:bg-cartNumBg
-                duration-150 transition-all ease-in-out">
-                    <div className="w-10 h-10 rounded-full bg-cartNumBg 
-                    group-hover:bg-card flex items-center justify-center">
+                duration-150 transition-all ease-in-out`}>
+                    <div className={`w-10 h-10 rounded-full ${filter === category.urlParaName ? 'bg-white' : 'bg-cartNumBg'}
+                    group-hover:bg-card flex items-center justify-center`}>
                         <IoFastFood 
-                            className="text-card group-hover:text-textColor text-lg"
+                            className={`${filter === category.urlParaName ? 'text-textColor' : 'text-white'} group-hover:text-textColor text-lg`}
                         />
                     </div>
-                    <p className="text-sm text-textColor group-hover:text-white">
+                    <p className={`text-sm ${filter === category.urlParaName ? 'text-white' : 'text-textColor'} group-hover:text-white`}>
                         {category.name}
                     </p>
                 </div>
