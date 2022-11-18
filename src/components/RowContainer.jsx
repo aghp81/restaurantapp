@@ -2,13 +2,19 @@ import React from 'react';
 import IceCream from "./img/iceCream.jpg";
 import { MdShoppingBasket } from "react-icons/md";
 import {motion} from "framer-motion";
+import { useEffect } from 'react';
+import { useRef } from 'react';
 
-const RowContainer = ({flag, data, ref}) => {
+const RowContainer = ({flag, data, scrollValue}) => {
+  const rowContainer = useRef()
+  useEffect(() => {
+    rowContainer.current.scrollLeft += scrollValue;
+  }, [scrollValue])
 
   return (
    <div
-   ref={RowContainer} 
-   className={`w-full flex items-center gap-3 my-12 ${
+   ref={rowContainer}
+   className={`w-full flex items-center gap-3 my-12 scroll-smooth ${
     flag 
     ? "overflow-x-scroll scrollbar-none" 
     : "overflow-x-hidden flex-wrap"
@@ -16,13 +22,13 @@ const RowContainer = ({flag, data, ref}) => {
     > 
         {data && data.map(item => (
           <div 
-          key={item.id} className="w-300 min-w-[300px] 
+          key={item?.id} className="w-300 min-w-[300px] 
           md:w-340 md:min-w-[340px] h-auto bg-cardOverlay 
           rounded-lg p-2 my-12 shadow-md 
           backdrop-blur-lg hover:drop-shadow-lg">
               <div className="w-full flex items-center justify-between">
                   <motion.img whileHover={{scale : 1.2 }}
-                  src={IceCream} 
+                  src={item?.imageURL} 
                   alt=""
                   className="w-40 -mt-8 drop-shadow-2xl" 
                   />
@@ -36,7 +42,7 @@ const RowContainer = ({flag, data, ref}) => {
               <div className="w-full flex flex-col gap-4 items-end justify-end">
                 <p className="text-textColor font-semibold text-base
                 md:text-lg">
-                  Chocolate & Vanilla
+                  {item?.title}
                 </p>
                 <p className="mt-1 text-sm text-gray-500">45 Calories</p>
                 <div className="flex items-center gap-8">
