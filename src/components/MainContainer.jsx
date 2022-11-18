@@ -53,6 +53,10 @@ const MainContainer = () => {
           flag={true} 
           data = {foodItems?.filter((n) => n.category==="fruits")} />
         </section>
+
+        <section className="w-full my-6">
+          
+        </section>
     </div>
     
   );
