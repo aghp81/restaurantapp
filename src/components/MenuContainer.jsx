@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {IoFastFood} from "react-icons/io5";
 import {categories} from "../utils/data";
 
 const MenuContainer = () => {
 
     const [filter, setFilter] = useState("chicken");
+
+    useEffect(() => {}, [filter]);
+
   return (
   <section className="w-full my-6" id="menu">
     <div className="w-full flex flex-col items-center justify-center">
@@ -23,9 +26,11 @@ const MenuContainer = () => {
                 className={`group ${filter === category.urlParaName ? 'bg-cartNumBg' : 'bg-card'} w-24 min-w-[94px] h-28 
                 cursor-pointer rounded-lg drop-shadow-xl 
                 flex flex-col gap-3 items-center justify-center hover:bg-cartNumBg
-                duration-150 transition-all ease-in-out`}>
-                    <div className={`w-10 h-10 rounded-full ${filter === category.urlParaName ? 'bg-white' : 'bg-cartNumBg'}
-                    group-hover:bg-card flex items-center justify-center`}>
+                duration-150 transition-all ease-in-out`}
+                onClick={() => setFilter(category.urlParaName)}
+                >
+                    <div className={`w-10 h-10 rounded-full shadow-lg ${filter === category.urlParaName ? 'bg-white' : 'bg-cartNumBg'}
+                    group-hover:bg-white flex items-center justify-center`}>
                         <IoFastFood 
                             className={`${filter === category.urlParaName ? 'text-textColor' : 'text-white'} group-hover:text-textColor text-lg`}
                         />
