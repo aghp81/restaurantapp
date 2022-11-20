@@ -7,7 +7,8 @@ import { useRef } from 'react';
 import NotFound from "../img/NotFound.svg";
 
 const RowContainer = ({flag, data, scrollValue}) => {
-  const rowContainer = useRef()
+  const rowContainer = useRef();
+
   useEffect(() => {
     rowContainer.current.scrollLeft += scrollValue;
   }, [scrollValue])
@@ -21,7 +22,7 @@ const RowContainer = ({flag, data, scrollValue}) => {
     : "overflow-x-hidden flex-wrap justify-center"
     }`}
     > 
-        {data ? 
+        {data && data.length > 0 ? 
         data.map(item => (
           <div 
           key={item?.id} className="w-300 h-[225px] min-w-[300px] 
@@ -57,9 +58,9 @@ const RowContainer = ({flag, data, scrollValue}) => {
                 </div>
               </div>
           </div>
-        )) : <div className="w-full flex items-center justify-center">
-            <img src={NotFound} className="h-420" alt="NotFound" />
-            <p>Items Not Available</p>
+        )) : <div className="w-full flex flex-col items-center justify-center">
+            <img src={NotFound} className="h-300" alt="NotFound" />
+            <p className="text-xl text-headingColor font-semibold my-2">Items Not Available</p>
           </div>}
     </div>
     );
