@@ -7,6 +7,7 @@ import { useStateValue } from "../context/StateProvider";
 import { useRef } from 'react';
 import { useEffect } from 'react';
 import MenuContainer from './MenuContainer';
+import CartContainer from './CartContainer';
 
 
 const MainContainer = () => {
@@ -56,6 +57,9 @@ const MainContainer = () => {
         </section>
 
         <MenuContainer />
+
+        <CartContainer />
+        
     </div>
     
   );
