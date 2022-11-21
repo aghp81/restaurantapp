@@ -4,14 +4,26 @@ import { RiRefreshFill } from 'react-icons/ri';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import IceCream from "./img/iceCream.jpg";
+import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 const CartContainer = () => {
+
+  const [{cartShow}, dispatch] =useStateValue();
+
+  const showCart = () => {
+    dispatch({
+        type: actionType.SET_CART_SHOW,
+        cartShow: !cartShow,
+    }); 
+};
+
   return (
     <div className="fixed top-0 right-0 w-full md:w-375 h-[100vh] 
     bg-white drop-shadow-md flex flex-col z-[101]">
         
         <div className="w-full flex items-center justify-between p-4 cursor-pointer">
-            <motion.div whileTap={{scale : 0.75}}>
+            <motion.div whileTap={{scale : 0.75}} onClick={showCart}>
                 <MdOutlineKeyboardBackspace className="text-textColor text-3xl" />
             </motion.div>
 
@@ -19,7 +31,8 @@ const CartContainer = () => {
 
             <motion.p whileTap={{scale : 0.75}} 
             className="flex items-center gap-2 p-1 px-2 my-2 bg-gray-100
-             rounded-md hover:shadow-md cursor-pointer text-textColor text-base">
+             rounded-md hover:shadow-md cursor-pointer text-textColor text-base"
+             >
                 Clear <RiRefreshFill />{ " " }
             </motion.p>
         </div>
