@@ -2,6 +2,7 @@ import React from 'react';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { RiRefreshFill } from 'react-icons/ri';
 import { motion } from 'framer-motion';
+import IceCream from "./img/iceCream.jpg";
 
 const CartContainer = () => {
   return (
@@ -26,8 +27,11 @@ const CartContainer = () => {
         <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
           <div className="w-full h-340 md:h-42 px-6 py-10 flex 
           flex-col gap-3 overflow-y-scroll scrollbar-none">
-            <div className="">
-
+            {  /*  cart Item  */  }
+            <div className="w-full p-1 px-2 rounded-lg 
+            bg-cartItem flex items-center gap-2">
+              <img src={IceCream} alt="" className="w-20 h-20 max-w-[60px] 
+              rounded-full object-contain" />
             </div>
           </div>
         </div>
