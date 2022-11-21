@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { RiRefreshFill } from 'react-icons/ri';
+import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import IceCream from "./img/iceCream.jpg";
 
@@ -43,7 +44,21 @@ const CartContainer = () => {
                 </p>
               </div>
 
-              
+              {  /*  button section  */  }
+              <div className="group flex items-center gap-2 ml-auto cursor-pointer">
+                <motion.div whileTap={{scale : 0.75}}>
+                  <BiMinus className="text-gray-50" />
+                </motion.div>
+
+                <p className="w-5 h-5 rounded-sm bg-cartBg 
+                text-gray-50 flex items-center justify-center">
+                  1
+                </p>
+
+                <motion.div whileTap={{scale : 0.75}}>
+                  <BiPlus className="text-gray-50" />
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
