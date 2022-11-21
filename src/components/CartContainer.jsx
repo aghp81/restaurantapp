@@ -32,6 +32,18 @@ const CartContainer = () => {
             bg-cartItem flex items-center gap-2">
               <img src={IceCream} alt="" className="w-20 h-20 max-w-[60px] 
               rounded-full object-contain" />
+
+              {  /*  name section  */  }
+              <div className="flex flex-col gap-2">
+                <p className="text-base text-gray-50">
+                  chocolate vanilla
+                </p>
+                <p className="text-sm block text-gray-300 font-semibold">
+                  $8.5
+                </p>
+              </div>
+
+              
             </div>
           </div>
         </div>
