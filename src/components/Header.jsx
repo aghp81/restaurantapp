@@ -43,9 +43,16 @@ const Header = () => {
 
         dispatch({
             type : actionType.SET_USER,
-            user : null
+            user : null,
         });
     };
+
+    const showCart = () => {
+        dispatch({
+            type: actionType.SET_CART_SHOW,
+            cartShow: !cartShow,
+        }); 
+    }
 
     return (
         <header className="fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary">
@@ -130,7 +137,7 @@ const Header = () => {
             <div className="flex item-center justify-between md:hidden w-full h-full">
                 
 
-                <div className="relative flex items-center justify-center">
+                <div className="relative flex items-center justify-center" onClick={showCart}>
                     <MdShoppingBasket className="text-textColor text-2xl cursor-pointer" />
                     <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center">
                         <p className="text-xs text-white font-semibold">2</p>
