@@ -26,6 +26,7 @@ const CartContainer = () => {
 
         {/*  bottom section  */}
         <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
+        {  /*  cart Item section  */  }
           <div className="w-full h-340 md:h-42 px-6 py-10 flex 
           flex-col gap-3 overflow-y-scroll scrollbar-none">
 
@@ -61,9 +62,40 @@ const CartContainer = () => {
                 </motion.div>
               </div>
             </div>
-
-                        
           </div>
+            { /*  cart total section  */ }
+            <div className="w-full flex-1 bg-cartTotal 
+            rounded-t-[2rem] flex flex-col items-center 
+            justify-evenly px-8 py-2">
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-400 text-lg">Sub Total</p>
+                <p className="text-gray-400 text-lg">$ 8.5</p>
+              </div>
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-400 text-lg">Delivery</p>
+                <p className="text-gray-400 text-lg">$ 2.5</p>
+              </div>
+
+              <div className="w-full border-b border-gray-600 my-2"></div>
+
+              <div className="w-full flex items-center justify-between">
+                <p className="text-gray-200 text-xl font-semibold">Total</p>
+                <p className="text-gray-200 text-xl font-semibold">$11.5</p>
+              </div>
+
+              <motion.button
+              whileTap={{scale : 0.8}}
+              type="button"
+              className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600
+              text-gray-50 text-lg my-2 hover:shadow-lg 
+              transition-all duration-150 ease-out"
+              >
+                Check Out
+              </motion.button>
+
+            </div>
+                        
+          
         </div>
 
     </div>
