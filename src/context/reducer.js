@@ -30,7 +30,7 @@ const reducer = (state, action) => {
             case actionType.SET_CARTITEMS:
             return {
                 ...state,
-                foodItems: action.foodItems,
+                cartItems: action.cartItems,
             };
 
         default: 
