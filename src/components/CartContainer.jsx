@@ -4,6 +4,7 @@ import { RiRefreshFill } from 'react-icons/ri';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import IceCream from "./img/iceCream.jpg";
+import EmptyCart from "./img/EmptyCart.png";
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 
@@ -41,6 +42,8 @@ const CartContainer = () => {
         </div>
 
         {/*  bottom section  */}
+        {cartItems && cartItems.length > 0 ? (
+
         <div className="w-full h-full bg-cartBg rounded-t-[2rem] flex flex-col">
         {  /*  cart Item section  */  }
           <div className="w-full h-340 md:h-42 px-6 py-10 flex 
@@ -115,7 +118,15 @@ const CartContainer = () => {
             </div>
                         
           
-        </div>
+        </div> 
+        ) : (
+          <div className="w-full h-full flex flex-col items-center justify-center gap-6">
+            <img src={EmptyCart} className="w-300" alt="" />
+            <p className="text-x1 text-textColor font-semibold">
+              Add some items to your cart
+            </p>
+          </div>
+        )}
 
     </motion.div>
   );
