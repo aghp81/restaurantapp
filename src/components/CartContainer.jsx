@@ -50,7 +50,9 @@ const CartContainer = () => {
             {cartItems && cartItems.map(item => (
               <div key={item.id} className="w-full p-1 px-2 rounded-lg 
               bg-cartItem flex items-center gap-2">
-                <img src={IceCream} alt="" className="w-20 h-20 max-w-[60px] 
+                <img src={item?.imageURL} 
+                alt="" 
+                className="w-20 h-20 max-w-[60px] 
                 rounded-full object-contain" />
   
                 {  /*  name section  */  }
@@ -59,7 +61,7 @@ const CartContainer = () => {
                     {item?.title}
                   </p>
                   <p className="text-sm block text-gray-300 font-semibold">
-                    ${item?.price}
+                    $ {item?.price}
                   </p>
                 </div>
   
