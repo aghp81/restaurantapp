@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 
 
 const CartItem = ({item}) => {
+
+    const [qty, setQty] = useState(1);
+
   return (
     <div 
               className="w-full p-1 px-2 rounded-lg 
@@ -31,7 +34,7 @@ const CartItem = ({item}) => {
   
                   <p className="w-5 h-5 rounded-sm bg-cartBg 
                   text-gray-50 flex items-center justify-center">
-                    {item.qty}
+                    {qty}
                   </p>
   
                   <motion.div whileTap={{scale : 0.75}}>
