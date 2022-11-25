@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
+import { useStateValue } from '../context/StateProvider';
 
 
 const CartItem = ({item}) => {
 
     const [qty, setQty] = useState(1);
+    const [{ cartItems }, dispatch] =useStateValue();
+
+    const updateQty = (action, id) => {
+      if(action === "add"){
+        setQty(qty + 1)
+        cartItems.map(item => {
+          if(item.id === id){
+            item.qty += 1;
+          }
+        });
+      }
+    }
 
   return (
     <div 
@@ -22,13 +35,14 @@ const CartItem = ({item}) => {
                     {item?.title}
                   </p>
                   <p className="text-sm block text-gray-300 font-semibold">
-                    $ {item?.price}
+                    $ {parseFloat(item?.price) * qty}
                   </p>
                 </div>
   
                 {  /*  button section  */  }
                 <div className="group flex items-center gap-2 ml-auto cursor-pointer">
-                  <motion.div whileTap={{scale : 0.75}}>
+                  <motion.div whileTap={{scale : 0.75}} 
+                  onClick={() => updateQty("remove", item?.id)}>
                     <BiMinus className="text-gray-50" />
                   </motion.div>
   
@@ -37,7 +51,8 @@ const CartItem = ({item}) => {
                     {qty}
                   </p>
   
-                  <motion.div whileTap={{scale : 0.75}}>
+                  <motion.div whileTap={{scale : 0.75}} 
+                  onClick={() => updateQty("add", item?.id)}>
                     <BiPlus className="text-gray-50" />
                   </motion.div>
                 </div>
