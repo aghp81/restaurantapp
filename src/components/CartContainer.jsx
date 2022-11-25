@@ -3,14 +3,14 @@ import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { RiRefreshFill } from 'react-icons/ri';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
-import IceCream from "./img/iceCream.jpg";
+//import IceCream from "./img/iceCream.jpg";
 import EmptyCart from "./img/EmptyCart.png";
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 
 const CartContainer = () => {
 
-  const [{cartShow, cartItems}, dispatch] =useStateValue();
+  const [{ cartShow, cartItems, user }, dispatch] =useStateValue();
 
   const showCart = () => {
     dispatch({
@@ -106,14 +106,25 @@ const CartContainer = () => {
                 <p className="text-gray-200 text-xl font-semibold">$11.5</p>
               </div>
 
-              <motion.button
-              whileTap={{scale : 0.8}}
-              type="button"
-              className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600
-              text-gray-50 text-lg my-2 hover:shadow-lg"
-              >
-                Check Out
-              </motion.button>
+              {user ? (
+                <motion.button
+                whileTap={{scale : 0.8}}
+                type="button"
+                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600
+                text-gray-50 text-lg my-2 hover:shadow-lg"
+                >
+                  Check Out
+                </motion.button>
+              ) : (
+                <motion.button
+                whileTap={{scale : 0.8}}
+                type="button"
+                className="w-full p-2 rounded-full bg-gradient-to-tr from-orange-400 to-orange-600
+                text-gray-50 text-lg my-2 hover:shadow-lg"
+                >
+                  Login to check out
+                </motion.button>
+              )}
 
             </div>
                         
