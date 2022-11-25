@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { BiMinus, BiPlus } from 'react-icons/bi';
+import { motion } from 'framer-motion';
 
-const CartItem = () => {
+
+const CartItem = ({item}) => {
   return (
-    <div key={item.id} 
+    <div 
               className="w-full p-1 px-2 rounded-lg 
               bg-cartItem flex items-center gap-2">
                 <img src={item?.imageURL} 

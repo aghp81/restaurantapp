@@ -1,12 +1,12 @@
 import React from 'react';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { RiRefreshFill } from 'react-icons/ri';
-import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 //import IceCream from "./img/iceCream.jpg";
 import EmptyCart from "./img/EmptyCart.png";
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
+import CartItem from './CartItem';
 
 const CartContainer = () => {
 
@@ -52,7 +52,7 @@ const CartContainer = () => {
             {  /*  cart Item  */  }
             {cartItems &&
              cartItems.map(item => (
-              
+              <CartItem key={item.id} item={item} />
               ))}
           </div>
             { /*  cart total section  */ }
