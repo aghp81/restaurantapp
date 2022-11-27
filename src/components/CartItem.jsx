@@ -55,8 +55,8 @@ const CartItem = ({item, setFlag, flag}) => {
     };
 
     useEffect(() => {
-      setItems(cartItems);
-    }, [qty])
+      items = cartItems;
+    }, [qty, items]);
 
   return (
     <div 
