@@ -7,6 +7,7 @@ import EmptyCart from "./img/EmptyCart.png";
 import { useStateValue } from '../context/StateProvider';
 import { actionType } from '../context/reducer';
 import CartItem from './CartItem';
+import { useEffect } from 'react';
 
 const CartContainer = () => {
 
@@ -17,6 +18,23 @@ const CartContainer = () => {
         type: actionType.SET_CART_SHOW,
         cartShow: !cartShow,
     }); 
+};
+
+useEffect(() => {
+  let totalPrice = cartItems.reduce(function (accumulator, item){
+    return accumulator + item.qty * item.price;
+  }, 0);
+  setTot(totalPrice);
+  console.log(tot);
+}, [tot, flag]);
+
+const clearCart = () => {
+  dispatch({
+    type: actionType.SET_CARTITEMS,
+    cartItems: [],
+  });
+
+  localStorage.setItem("cartItems", JSON.stringify([]));
 };
 
   return (
@@ -61,7 +79,7 @@ const CartContainer = () => {
             justify-evenly px-8 py-2">
               <div className="w-full flex items-center justify-between">
                 <p className="text-gray-400 text-lg">Sub Total</p>
-                <p className="text-gray-400 text-lg">$ 8.5</p>
+                <p className="text-gray-400 text-lg">$ {tot}</p>
               </div>
               <div className="w-full flex items-center justify-between">
                 <p className="text-gray-400 text-lg">Delivery</p>
@@ -72,7 +90,9 @@ const CartContainer = () => {
 
               <div className="w-full flex items-center justify-between">
                 <p className="text-gray-200 text-xl font-semibold">Total</p>
-                <p className="text-gray-200 text-xl font-semibold">$11.5</p>
+                <p className="text-gray-200 text-xl font-semibold">
+                  $ {tot + 2.5}
+                  </p>
               </div>
 
               {user ? (
