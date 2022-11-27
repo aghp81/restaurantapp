@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BiMinus, BiPlus } from 'react-icons/bi';
 import { motion } from 'framer-motion';
 import { useStateValue } from '../context/StateProvider';
+import { actionType } from '../context/reducer';
 
 
-const CartItem = ({item}) => {
+const CartItem = ({item, setFlag, flag}) => {
 
-    const [qty, setQty] = useState(1);
+    const [qty, setQty] = useState(item.qty);
+    const [items, setItems] = useState([]);
     const [{ cartItems }, dispatch] =useStateValue();
+
+    const cartDispatch = () => {
+      localStorage.setItem("cartItems", JSON.stringify(items));
+      dispatch({
+        type : actionType.SET_CARTITEMS,
+        cartItems : items,
+      });
+    };
 
     const updateQty = (action, id) => {
       if(action === "add"){
@@ -15,10 +25,38 @@ const CartItem = ({item}) => {
         cartItems.map(item => {
           if(item.id === id){
             item.qty += 1;
+            setFlag(flag + 1);
           }
         });
+        cartDispatch();
+      }else{
+        if(qty === 1 ){
+          setItems(cartItems.filter((item) => item.id !== id))
+          cartDispatch();
+        }else{
+          //initial state value is one so you need to check if 1 then remove it
+          if(qty === 1){
+            items = cartItems.filter((item) => item.id !== id);
+            setFlag(flag + 1);
+            cartDispatch();
+          }else{
+            setQty(qty - 1);
+          cartItems.map((item) => {
+            if(item.id === id){
+              item.qty -= 1;
+              setFlag(flag + 1);
+            }
+          });
+          cartDispatch();
+          }
+
+        }
       }
-    }
+    };
+
+    useEffect(() => {
+      setItems(cartItems);
+    }, [qty])
 
   return (
     <div 
